@@ -25,14 +25,15 @@ async function processFile(filePath) {
     const outputFileName = `output_${path.basename(filePath)}`;
     const outputPath = path.join('output', outputFileName);
 
-    // Write the first element to the output file
-    await writeFile(outputPath, JSON.stringify(firstElement, null, 2));
+    // Write the first element to the output file (formatted with 2 spaces indentation)
+    await writeFile(outputPath, JSON.stringify(firstElement, null, 2), { flag: 'w' });
 
     console.log(`First element written to ${outputPath}`);
   } catch (error) {
     console.error(`error processing the file: ${filePath}:`, error);
   }
 }
+
 
 async function Main(entry, options) {
   try {
